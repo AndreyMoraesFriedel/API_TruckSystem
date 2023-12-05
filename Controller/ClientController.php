@@ -24,4 +24,9 @@ class ClientController{
         return $arr->getClientEditModel($array,$id);
     }
 
+    public function getClientDelete($id){
+        $arr = new ClientModel;
+        return $arr->getClientDeleteModel($id);
+    }
+
 }

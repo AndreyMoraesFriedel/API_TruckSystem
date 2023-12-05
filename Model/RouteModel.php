@@ -43,7 +43,7 @@ class RouteModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class RouteModel extends Connection{
 
         $sql .= "WHERE id_Route = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Route Editada com Sucesso";
+        }else{
+            return "Route Não Editada";
+        }
 
+    }
+
+    public function getRouteDeleteModel($id){
+        $sql = "DELETE FROM `u123002_route` WHERE id_Route = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Route Deletado com Sucesso";
+        }else{
+            return "Route Não Deletado";
+        }
     }
 
 }

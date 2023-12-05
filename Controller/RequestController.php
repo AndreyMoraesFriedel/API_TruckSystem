@@ -21,4 +21,9 @@ class RequestController{
         return $arr->getRequestEditModel($array,$id);
     }
 
+    public function getRequestDelete($id){
+        $arr = new RequestModel;
+        return $arr->getRequestDeleteModel($id);
+    }
+
 }

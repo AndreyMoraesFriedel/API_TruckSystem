@@ -21,4 +21,9 @@ class TruckController{
         return $arr->getTruckEditModel($array,$id);
     }
 
+    public function getTruckDelete($id){
+        $arr = new TruckModel;
+        return $arr->getTruckDeleteModel($id);
+    }
+
 }

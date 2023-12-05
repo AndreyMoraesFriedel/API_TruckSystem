@@ -43,7 +43,7 @@ class WarehouseModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class WarehouseModel extends Connection{
 
         $sql .= "WHERE id_Warehouse = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Warehouse Editada com Sucesso";
+        }else{
+            return "Warehouse Não Editada";
+        }
 
+    }
+
+    public function getWarehouseDeleteModel($id){
+        $sql = "DELETE FROM `u123002_warehouse` WHERE id_Warehouse = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Warehouse Deletado com Sucesso";
+        }else{
+            return "Warehouse Não Deletado";
+        }
     }
 
 }

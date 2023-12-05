@@ -21,4 +21,9 @@ class TypePersonController{
         return $arr->getTypePersonEditModel($array,$id);
     }
 
+    public function getTypePersonDelete($id){
+        $arr = new TypePersonModel;
+        return $arr->getTypePersonDeleteModel($id);
+    }
+
 }

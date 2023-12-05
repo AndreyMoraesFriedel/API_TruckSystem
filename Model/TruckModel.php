@@ -43,7 +43,7 @@ class TruckModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class TruckModel extends Connection{
 
         $sql .= "WHERE id_truck = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Truck Editada com Sucesso";
+        }else{
+            return "Truck Não Editada";
+        }
 
+    }
+
+    public function getTruckDeleteModel($id){
+        $sql = "DELETE FROM `u123002_truck` WHERE id_truck = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Truck Deletado com Sucesso";
+        }else{
+            return "Truck Não Deletado";
+        }
     }
 
 }

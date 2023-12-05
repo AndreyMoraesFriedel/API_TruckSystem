@@ -43,7 +43,7 @@ class RequestModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class RequestModel extends Connection{
 
         $sql .= "WHERE id_Request = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Request Editada com Sucesso";
+        }else{
+            return "Request Não Editada";
+        }
 
+    }
+
+    public function getRequestDeleteModel($id){
+        $sql = "DELETE FROM `u123002_request` WHERE id_Request = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Request Deletado com Sucesso";
+        }else{
+            return "Request Não Deletado";
+        }
     }
 
 }

@@ -43,7 +43,7 @@ class MaintenanceModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class MaintenanceModel extends Connection{
 
         $sql .= "WHERE id_Maintenance = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Maintenance Editada com Sucesso";
+        }else{
+            return "Maintenance Não Editada";
+        }
 
+    }
+
+    public function getMaintenanceDeleteModel($id){
+        $sql = "DELETE FROM `u123002_maintenance` WHERE id_Maintenance = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Maintenance Deletado com Sucesso";
+        }else{
+            return "Maintenance Não Deletado";
+        }
     }
 
 }

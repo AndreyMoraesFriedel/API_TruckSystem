@@ -21,4 +21,9 @@ class WarehouseController{
         return $arr->getWarehouseEditModel($array,$id);
     }
 
+    public function getWarehouseDelete($id){
+        $arr = new WarehouseModel;
+        return $arr->getWarehouseDeleteModel($id);
+    }
+
 }

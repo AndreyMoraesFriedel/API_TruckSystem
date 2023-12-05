@@ -52,7 +52,7 @@ class ClientModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -61,8 +61,23 @@ class ClientModel extends Connection{
 
         $sql .= "WHERE id_client = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Client Editada com Sucesso";
+        }else{
+            return "Client Não Editada";
+        }
 
+    }
+
+    public function getClientDeleteModel($id){
+        $sql = "DELETE FROM `u123002_client` WHERE id_client = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Client Deletado com Sucesso";
+        }else{
+            return "Client Não Deletado";
+        }
     }
 
 }

@@ -21,4 +21,9 @@ class PaymentController{
         return $arr->getPaymentEditModel($array,$id);
     }
 
+    public function getPaymentDelete($id){
+        $arr = new PaymentModel;
+        return $arr->getPaymentDeleteModel($id);
+    }
+
 }

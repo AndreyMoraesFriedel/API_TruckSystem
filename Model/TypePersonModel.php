@@ -43,7 +43,7 @@ class TypePersonModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -52,8 +52,23 @@ class TypePersonModel extends Connection{
 
         $sql .= "WHERE id_RankEmp = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "TypePerson Editada com Sucesso";
+        }else{
+            return "TypePerson Não Editada";
+        }
 
+    }
+
+    public function getTypePersonDeleteModel($id){
+        $sql = "DELETE FROM `u123002_type_person` WHERE id_RankEmp = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "TypePerson Deletado com Sucesso";
+        }else{
+            return "TypePerson Não Deletado";
+        }
     }
 
 }

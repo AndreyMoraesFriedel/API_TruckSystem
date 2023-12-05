@@ -21,4 +21,9 @@ class DeliveryController{
         return $arr->getDeliveryEditModel($array,$id);
     }
 
+    public function getDeliveryDelete($id){
+        $arr = new DeliveryModel;
+        return $arr->getDeliveryDeleteModel($id);
+    }
+
 }

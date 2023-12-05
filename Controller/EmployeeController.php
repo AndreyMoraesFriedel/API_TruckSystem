@@ -21,4 +21,9 @@ class EmployeeController{
         return $arr->getEmployeeEditModel($array,$id);
     }
 
+    public function getDeliveryDelete($id){
+        $arr = new DeliveryModel;
+        return $arr->getDeliveryDeleteModel($id);
+    }
+
 }

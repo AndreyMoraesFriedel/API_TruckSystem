@@ -21,4 +21,9 @@ class RouteController{
         return $arr->getRouteEditModel($array,$id);
     }
 
+    public function getRouteDelete($id){
+        $arr = new RouteModel;
+        return $arr->getRouteDeleteModel($id);
+    }
+
 }

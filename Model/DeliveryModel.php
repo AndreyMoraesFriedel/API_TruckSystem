@@ -42,7 +42,7 @@ class DeliveryModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -51,8 +51,24 @@ class DeliveryModel extends Connection{
 
         $sql .= "WHERE id_Delivery = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Delivery Editada com Sucesso";
+        }else{
+            return "Delivery Não Editada";
+        }
 
     }
+
+    public function getDeliveryDeleteModel($id){
+        $sql = "DELETE FROM `u123002_delivery` WHERE id_Delivery = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Delivery Deletado com Sucesso";
+        }else{
+            return "Delivery Não Deletado";
+        }
+    }
+    
 
 }

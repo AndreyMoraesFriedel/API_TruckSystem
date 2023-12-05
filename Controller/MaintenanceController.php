@@ -21,4 +21,9 @@ class MaintenanceController{
         return $arr->getMaintenanceEditModel($array,$id);
     }
 
+    public function getMaintenanceDelete($id){
+        $arr = new MaintenanceModel;
+        return $arr->getMaintenanceDeleteModel($id);
+    }
+
 }

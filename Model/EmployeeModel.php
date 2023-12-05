@@ -42,7 +42,7 @@ class EmployeeModel extends Connection{
             $campoTabela = $dado[0];
             $valTabela = $dado[1];
 
-            if($contador == intval($contArr)){
+            if($contador == ($contArr)){
                 $sql .= "`$campoTabela`='$valTabela' ";
             }else{
                 $sql .= "`$campoTabela`='$valTabela', ";
@@ -51,8 +51,23 @@ class EmployeeModel extends Connection{
 
         $sql .= "WHERE id_Employee = $id";
 
-        var_dump($sql);
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Employee Editada com Sucesso";
+        }else{
+            return "Delivery Não Editada";
+        }
 
+    }
+
+    public function getEmployeeDeleteModel($id){
+        $sql = "DELETE FROM `u123002_employee` WHERE id_Employee = $id";    
+        $data = $this->dbConnection()->prepare($sql);
+        if($data->execute()){
+            return "Employee Deletado com Sucesso";
+        }else{
+            return "Employee Não Deletado";
+        }
     }
 
 }
