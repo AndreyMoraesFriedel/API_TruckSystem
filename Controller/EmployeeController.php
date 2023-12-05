@@ -16,4 +16,9 @@ class EmployeeController{
         return $arr->getEmployeeCreateModel($array);
     }
 
+    public function getEmployeeEdit($array,$id){
+        $arr = new EmployeeModel;
+        return $arr->getEmployeeEditModel($array,$id);
+    }
+
 }

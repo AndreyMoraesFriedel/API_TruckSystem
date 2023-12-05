@@ -16,4 +16,9 @@ class MaintenanceController{
         return $arr->getMaintenanceCreateModel($array);
     }
 
+    public function getMaintenanceEdit($array,$id){
+        $arr = new MaintenanceModel;
+        return $arr->getMaintenanceEditModel($array,$id);
+    }
+
 }

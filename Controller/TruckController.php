@@ -16,4 +16,9 @@ class TruckController{
         return $arr->getTruckCreateModel($array);
     }
 
+    public function getTruckEdit($array,$id){
+        $arr = new TruckModel;
+        return $arr->getTruckEditModel($array,$id);
+    }
+
 }

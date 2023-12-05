@@ -16,4 +16,9 @@ class PaymentController{
         return $arr->getPaymentCreateModel($array);
     }
 
+    public function getPaymentEdit($array,$id){
+        $arr = new PaymentModel;
+        return $arr->getPaymentEditModel($array,$id);
+    }
+
 }

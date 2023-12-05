@@ -19,4 +19,9 @@ class ClientController{
         return $arr->getClientCreateModel($array);
     }
 
+    public function getClientEdit($array,$id){
+        $arr = new ClientModel;
+        return $arr->getClientEditModel($array,$id);
+    }
+
 }

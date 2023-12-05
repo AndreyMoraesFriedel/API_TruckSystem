@@ -32,4 +32,28 @@ class RequestModel extends Connection{
 
     }
 
+    public function getRequestEditModel($array,$id){
+        $sql = "UPDATE `u123002_request` SET ";
+        $contArr = count($array);
+        $contador = 0;
+
+        foreach($array as $campo){
+            $contador++;
+            $dado = explode("=",$campo);
+            $campoTabela = $dado[0];
+            $valTabela = $dado[1];
+
+            if($contador == intval($contArr)){
+                $sql .= "`$campoTabela`='$valTabela' ";
+            }else{
+                $sql .= "`$campoTabela`='$valTabela', ";
+            }
+        }
+
+        $sql .= "WHERE id_Request = $id";
+
+        var_dump($sql);
+
+    }
+
 }

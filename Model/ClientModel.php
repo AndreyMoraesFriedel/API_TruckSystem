@@ -41,4 +41,28 @@ class ClientModel extends Connection{
 
     }
 
+    public function getClientEditModel($array,$id){
+        $sql = "UPDATE `u123002_client` SET ";
+        $contArr = count($array);
+        $contador = 0;
+
+        foreach($array as $campo){
+            $contador++;
+            $dado = explode("=",$campo);
+            $campoTabela = $dado[0];
+            $valTabela = $dado[1];
+
+            if($contador == intval($contArr)){
+                $sql .= "`$campoTabela`='$valTabela' ";
+            }else{
+                $sql .= "`$campoTabela`='$valTabela', ";
+            }
+        }
+
+        $sql .= "WHERE id_client = $id";
+
+        var_dump($sql);
+
+    }
+
 }

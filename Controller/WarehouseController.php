@@ -16,4 +16,9 @@ class WarehouseController{
         return $arr->getWarehouseCreateModel($array);
     }
 
+    public function getWarehouseEdit($array,$id){
+        $arr = new WarehouseModel;
+        return $arr->getWarehouseEditModel($array,$id);
+    }
+
 }

@@ -16,4 +16,9 @@ class TypePersonController{
         return $arr->getTypePersonCreateModel($array);
     }
 
+    public function getTypePersonEdit($array,$id){
+        $arr = new TypePersonModel;
+        return $arr->getTypePersonEditModel($array,$id);
+    }
+
 }

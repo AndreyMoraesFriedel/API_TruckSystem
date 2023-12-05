@@ -16,4 +16,9 @@ class RequestController{
         return $arr->getRequestCreateModel($array);
     }
 
+    public function getRequestEdit($array,$id){
+        $arr = new RequestModel;
+        return $arr->getRequestEditModel($array,$id);
+    }
+
 }

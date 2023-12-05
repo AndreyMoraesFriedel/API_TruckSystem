@@ -16,4 +16,9 @@ class RouteController{
         return $arr->getRouteCreateModel($array);
     }
 
+    public function getRouteEdit($array,$id){
+        $arr = new RouteModel;
+        return $arr->getRouteEditModel($array,$id);
+    }
+
 }

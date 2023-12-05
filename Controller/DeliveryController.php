@@ -16,4 +16,9 @@ class DeliveryController{
         return $arr->getDeliveryCreateModel($array);
     }
 
+    public function getDeliveryEdit($array,$id){
+        $arr = new DeliveryModel;
+        return $arr->getDeliveryEditModel($array,$id);
+    }
+
 }

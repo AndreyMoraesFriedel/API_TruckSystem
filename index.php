@@ -56,11 +56,21 @@ if(!empty($api) && !empty($controller)){
                 break;
             case "POST":
                 $methodClass = "get".ucfirst($controller)."Create";
-                $request = array("status" => 200, "data" => $ob->$methodClass($_POST));
+                $request = array("status" => 201, "data" => $ob->$methodClass($_POST));
                 echo json_encode($request,JSON_UNESCAPED_UNICODE);
                 break;
             case "PUT":
-                echo "PUT";
+
+                $methodClass = "get".ucfirst($controller)."Edit";
+                $uri = "$_SERVER[REQUEST_URI]";
+                $uri = explode("?",$uri);
+                $idLink = $rest = substr($uri[0], -1);
+                $uri = explode("&", $uri[1]);
+                
+                $request = array("status" => 202, 
+                "data" => $ob->$methodClass($uri, $idLink));
+                echo json_encode($request,JSON_UNESCAPED_UNICODE);
+
                 break;
             case "DELETE":
                 echo "DELETE";
